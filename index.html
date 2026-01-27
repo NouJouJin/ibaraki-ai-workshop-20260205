@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Coding ワークショップ | 2026.02.05 水戸</title>
+    <meta name="description" content="茨城県水戸市で開催されるVibe Codingワークショップ。AIと一緒にアプリを作る新しい体験。">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌾</text></svg>">
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --primary-color: #2d5016;
+            --secondary-color: #4a7c2c;
+            --accent-color: #6ba83e;
+            --tech-blue: #0066cc;
+            --light-blue: #e6f2ff;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --text-muted: #999999;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7f7f7;
+            --bg-dark: #1a1a2e;
+            --border-color: #e0e0e0;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+            --font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            --border-radius-sm: 0.25rem;
+            --border-radius-md: 0.5rem;
+            --border-radius-lg: 1rem;
+            --border-radius-xl: 1.5rem;
+            --box-shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --box-shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --box-shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.3s ease;
+        }
+
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        a {
+            color: var(--tech-blue);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ===== Utility Classes ===== */
+        .hidden {
+            display: none !important;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .section-title .icon {
+            font-size: 1.5rem;
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== Auth Overlay ===== */
+        .auth-overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 1rem;
+        }
+
+        .auth-container {
+            background: var(--bg-primary);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--box-shadow-lg);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .auth-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-logo .logo-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .auth-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .auth-form {
+            margin-top: 1.5rem;
+        }
+
+        .auth-form label {
+            display: block;
+            text-align: left;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .password-input-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .password-input-wrapper input {
+            width: 100%;
+            padding: 0.875rem 3rem 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+
+        .password-input-wrapper input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            opacity: 0.6;
+            transition: opacity var(--transition-fast);
+        }
+
+        .toggle-password:hover {
+            opacity: 1;
+        }
+
+        .auth-error {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: #fee;
+            border-radius: var(--border-radius-sm);
+        }
+
+        .auth-button {
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .auth-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-md);
+        }
+
+        .auth-hint {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== Header ===== */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .header-title {
+            margin-bottom: 1.5rem;
+        }
+
+        .header-title .title-main {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .header-title .title-sub {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .header-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .info-item .info-icon {
+            font-size: 1.1rem;
+        }
+
+        .header-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .header-nav a {
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-md);
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.1);
+            transition: background var(--transition-fast);
+        }
+
+        .header-nav a:hover {
+            background: rgba(255,255,255,0.2);
+            text-decoration: none;
+        }
+
+        /* ===== Timeline Section ===== */
+        .goal-card {
+            background: linear-gradient(135deg, var(--light-blue) 0%, #d4edda 100%);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .goal-card .goal-text {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+        }
+
+        .sub-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -1.5rem;
+            top: 0.25rem;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-primary);
+            border: 4px solid var(--secondary-color);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.active .timeline-marker {
+            background: var(--accent-color);
+            border-color: var(--primary-color);
+        }
+
+        .timeline-content {
+            background: var(--bg-primary);
+            padding: 1rem 1.25rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--box-shadow-sm);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .timeline-time {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ===== Vibe Coding Section ===== */
+        .vibe-description {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-card {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-sm);
+        }
+
+        .comparison-card h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .comparison-card.old {
+            border: 2px dashed var(--border-color);
+        }
+
+        .comparison-card.new {
+            border: 2px solid var(--accent-color);
+            background: linear-gradient(135deg, rgba(107,168,62,0.05), rgba(45,80,22,0.05));
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #9cdcfe;
+            font-family: 'Consolas', 'Monaco', monospace;
+            padding: 1rem;
+            border-radius: var(--border-radius-md);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            display: block;
+        }
+
+        .chat-bubble {
+            background: var(--light-blue);
+            padding: 1rem;
+            border-radius: var(--border-radius-lg);
+            border-bottom-left-radius: 0;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .comparison-card > p {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        .comparison-arrow {
+            display: none;
+        }
+
+        .points-list {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .point-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-md);
+            margin-bottom: 0.5rem;
+            box-shadow: var(--box-shadow-sm);
+        }
+
+        .point-check {
+            color: var(--success-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* ===== Hands-on Section ===== */
+        .steps-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .step-card {
+            display: flex;
+            gap: 1rem;
+            background: var(--bg-primary);
+            padding: 1.25rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-sm);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-md);
+        }
+
+        .step-card.highlight {
+            border: 2px solid var(--accent-color);
+            background: linear-gradient(135deg, rgba(107,168,62,0.05), rgba(45,80,22,0.05));
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .step-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .step-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .theme-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .theme-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--light-blue);
+            color: var(--tech-blue);
+            border-radius: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .step-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--tech-blue);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .tool-button {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: var(--tech-blue);
+            color: white;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: background var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .tool-button:hover {
+            background: #0055aa;
+            transform: translateY(-1px);
+            text-decoration: none;
+        }
+
+        /* ===== Participants Section ===== */
+        .search-box {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 2.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-box .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+        }
+
+        .participants-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .participants-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-sm);
+        }
+
+        .participants-table th,
+        .participants-table td {
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .participants-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .participants-table td {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .participants-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .participants-table tbody tr:hover {
+            background: var(--light-blue);
+        }
+
+        .participants-table .template-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--tech-blue);
+            color: white;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background var(--transition-fast);
+        }
+
+        .participants-table .template-link:hover {
+            background: #0055aa;
+            text-decoration: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== Prompts Section ===== */
+        .prompts-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .prompt-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .prompt-card {
+            background: var(--bg-primary);
+            padding: 1rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--box-shadow-sm);
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .prompt-text {
+            flex: 1;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-family: 'Consolas', 'Monaco', monospace;
+            background: var(--bg-secondary);
+            padding: 0.75rem;
+            border-radius: var(--border-radius-sm);
+            margin: 0;
+        }
+
+        .copy-button {
+            flex-shrink: 0;
+            padding: 0.5rem 1rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background var(--transition-fast);
+        }
+
+        .copy-button:hover {
+            background: var(--secondary-color);
+        }
+
+        .copy-button.copied {
+            background: var(--success-color);
+        }
+
+        .prompt-tip {
+            background: linear-gradient(135deg, var(--light-blue), #d4edda);
+            padding: 1rem 1.25rem;
+            border-radius: var(--border-radius-md);
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .prompt-tip .tip-icon {
+            font-size: 1.25rem;
+        }
+
+        .prompt-tip p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ===== Deploy Section ===== */
+        .deploy-steps {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .deploy-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .deploy-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--tech-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .step-detail {
+            flex: 1;
+            padding-top: 0.25rem;
+        }
+
+        .step-detail h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .step-detail p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-weight: 500;
+        }
+
+        /* ===== Presentation Section ===== */
+        .presentation-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .presentation-card {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-sm);
+        }
+
+        .presentation-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .presentation-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .presentation-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .presentation-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* ===== Survey Section ===== */
+        .survey-embed {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-sm);
+        }
+
+        .survey-embed iframe {
+            display: block;
+            border: none;
+        }
+
+        .survey-placeholder {
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 2.5rem 0 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-info h3 .year {
+            opacity: 0.7;
+        }
+
+        .footer-info p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .footer-links h4,
+        .footer-social h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            opacity: 0.9;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-copyright p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ===== Responsive ===== */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 2rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .header-title .title-main {
+                font-size: 2.5rem;
+            }
+
+            .header-info {
+                flex-direction: row;
+                gap: 2rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr auto 1fr;
+                align-items: center;
+            }
+
+            .comparison-arrow {
+                display: block;
+                font-size: 2rem;
+                color: var(--accent-color);
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .prompts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .presentation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                font-size: 17px;
+            }
+
+            .section-title {
+                font-size: 2.25rem;
+            }
+
+            .header-title .title-main {
+                font-size: 3rem;
+            }
+
+            .timeline-content h4 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== Auth Overlay ===== -->
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-container">
+            <div class="auth-logo">
+                <span class="logo-icon">🌾</span>
+                <h1>Vibe Coding ワークショップ</h1>
+                <p class="auth-subtitle">2026年2月5日（木）| 茨城県水戸市</p>
+            </div>
+            <form id="auth-form" class="auth-form">
+                <label for="password">参加者パスワードを入力</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password" placeholder="当日配布のパスワード" autocomplete="off" required>
+                    <button type="button" id="toggle-password" class="toggle-password" aria-label="パスワード表示切替">
+                        <span class="eye-icon">👁</span>
+                    </button>
+                </div>
+                <p id="auth-error" class="auth-error hidden">パスワードが正しくありません</p>
+                <button type="submit" class="auth-button">参加者ページへ</button>
+            </form>
+            <p class="auth-hint">※パスワードは当日会場でお伝えします</p>
+        </div>
+    </div>
+
+    <!-- ===== Main Content ===== -->
+    <div id="main-content" class="hidden">
+        <!-- Header -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="header-badge">🔒 参加者限定</div>
+                <h1 class="header-title">
+                    <span class="title-main">Vibe Coding ワークショップ</span>
+                    <span class="title-sub">AIと一緒にアプリを作ろう</span>
+                </h1>
+                <div class="header-info">
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <span>2026年2月5日（木）13:00〜15:00</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <span>鯉渕学園農業栄養専門学校</span>
+                    </div>
+                </div>
+                <nav class="header-nav">
+                    <a href="#timeline">タイムライン</a>
+                    <a href="#hands-on">ハンズオン</a>
+                    <a href="#participants">テンプレート</a>
+                    <a href="#prompts">プロンプト集</a>
+                    <a href="#survey">アンケート</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="icon">🎯</span>
+                    今日のゴール
+                </h2>
+                <div class="goal-card">
+                    <p class="goal-text">
+                        <strong>自分だけのWebアプリを作って、インターネットに公開する</strong>
+                    </p>
+                </div>
+
+                <h3 class="sub-title">タイムライン</h3>
+                <div class="timeline">
+                    <div class="timeline-item active">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-time">13:00〜13:10</span>
+                            <h4>🎤 オープニング</h4>
+                            <p>森理事長 ご挨拶</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-time">13:10〜13:40</span>
+                            <h4>💡 【知る】AIでできること紹介</h4>
+                            <p>AIの基礎知識、Vibe Codingの紹介</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-time">13:40〜14:30</span>
+                            <h4>🛠 【体験】ハンズオンタイム</h4>
+                            <p>テーマ選択→テンプレ→生成→調整→デプロイ</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-time">14:30〜14:50</span>
+                            <h4>🎉 【共有】アウトプット発表</h4>
+                            <p>完成したものを参加者同士でシェア</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-time">14:50〜15:00</span>
+                            <h4>📝 クロージング・アンケート</h4>
+                            <p>フィードバックと次のステップ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vibe Coding Section -->
+        <section id="vibe-coding" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="icon">🤖</span>
+                    Vibe Codingとは
+                </h2>
+                <p class="vibe-description">
+                    難しいコードを書かなくても、<strong>AIに話しかけるだけ</strong>でアプリが作れる新しい開発スタイル
+                </p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card old">
+                        <h4>従来の開発</h4>
+                        <div class="code-block">
+                            <code>const app = new App();</code>
+                            <code>app.init({ config });</code>
+                            <code>function render() { ... }</code>
+                        </div>
+                        <p>英語のようなコードを大量に書く</p>
+                    </div>
+                    <div class="comparison-arrow">→</div>
+                    <div class="comparison-card new">
+                        <h4>Vibe Coding</h4>
+                        <div class="chat-bubble">
+                            💬 「ToDoリストアプリを作って。タスクの追加・削除ができて、完了したらチェックできるようにして」
+                        </div>
+                        <p>AIに「こんなの作って」と話しかけるだけ</p>
+                    </div>
+                </div>
+
+                <div class="points-list">
+                    <div class="point-item">
+                        <span class="point-check">✓</span>
+                        <span>プログラミング経験ゼロでもOK</span>
+                    </div>
+                    <div class="point-item">
+                        <span class="point-check">✓</span>
+                        <span>「AIとの会話」がそのままプログラムになる</span>
+                    </div>
+                    <div class="point-item">
+                        <span class="point-check">✓</span>
+                        <span>直感（Vibe）でモノづくりができる</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hands-on Section -->
+        <section id="hands-on" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="icon">🛠</span>
+                    ハンズオンの進め方
+                </h2>
+
+                <div class="steps-container">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>テーマを選ぶ</h3>
+                            <p>作りたいアプリのジャンルを決めましょう</p>
+                            <div class="theme-tags">
+                                <span class="theme-tag">📝 ToDoリスト</span>
+                                <span class="theme-tag">🧮 計算機</span>
+                                <span class="theme-tag">🎮 ミニゲーム</span>
+                                <span class="theme-tag">📊 データ可視化</span>
+                                <span class="theme-tag">💡 自由テーマ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>テンプレートを開く</h3>
+                            <p>下の参加者一覧から自分の名前を探して、リンクをクリック</p>
+                            <a href="#participants" class="step-link">→ 参加者テンプレート一覧へ</a>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Google AI Studioで作る</h3>
+                            <p>テンプレートの内容をコピーして、AIと対話しながらアプリを作成</p>
+                            <a href="https://aistudio.google.com/" target="_blank" class="tool-button">Google AI Studio を開く →</a>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>調整・改善する</h3>
+                            <p>「もっと○○して」「色を変えて」など、対話を続けて改善</p>
+                            <a href="#prompts" class="step-link">→ 困ったときのプロンプト集へ</a>
+                        </div>
+                    </div>
+
+                    <div class="step-card highlight">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>🎉 インターネットに公開！</h3>
+                            <p>Google AI Studioの「Deploy」ボタンで世界に公開しよう</p>
+                            <a href="#deploy" class="step-link">→ デプロイ手順へ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Participants Section -->
+        <section id="participants" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="icon">📋</span>
+                    参加者テンプレート一覧
+                </h2>
+                <p class="section-description">
+                    自分の名前を探して、テンプレートリンクをクリックしてください
+                </p>
+
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="participant-search" placeholder="名前で検索..." aria-label="参加者検索">
+                </div>
+
+                <div class="participants-table-wrapper">
+                    <table class="participants-table" id="participants-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 60px;">No.</th>
+                                <th>お名前</th>
+                                <th style="width: 180px;">テンプレート</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JavaScript で動的生成 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <p id="no-results" class="no-results hidden">
+                    検索結果がありません
+                </p>
+            </div>
+        </section>
+
+        <!-- Prompts Section -->
+        <section id="prompts" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="icon">💡</span>
+                    困ったときのプロンプト集
+                </h2>
+
+                <div class="prompts-grid">
+                    <div class="prompt-category">
+                        <h3>🚀 はじめの一歩</h3>
+                        <div class="prompt-card">
+                            <p class="prompt-text">○○アプリを作ってください。必要な機能は△△と□□です。</p>
+                            <button class="copy-button" data-copy="○○アプリを作ってください。必要な機能は△△と□□です。">コピー</button>
+                        </div>
+                    </div>
+
+                    <div class="prompt-category">
+                        <h3>🎨 見た目を変える</h3>
+                        <div class="prompt-card">
+                            <p class="prompt-text">背景色を青に、ボタンを丸くしてください</p>
+                            <button class="copy-button" data-copy="背景色を青に、ボタンを丸くしてください">コピー</button>
+                        </div>
+                        <div class="prompt-card">
+                            <p class="prompt-text">もっとモダンでおしゃれなデザインにしてください</p>
+                            <button class="copy-button" data-copy="もっとモダンでおしゃれなデザインにしてください">コピー</button>
+                        </div>
+                    </div>
+
+                    <div class="prompt-category">
+                        <h3>🔧 機能を追加する</h3>
+                        <div class="prompt-card">
+                            <p class="prompt-text">リセットボタンを追加してください</p>
+                            <button class="copy-button" data-copy="リセットボタンを追加してください">コピー</button>
+                        </div>
+                        <div class="prompt-card">
+                            <p class="prompt-text">データを保存できるようにしてください</p>
+                            <button class="copy-button" data-copy="データを保存できるようにしてください">コピー</button>
+                        </div>
+                    </div>
+
+                    <div class="prompt-category">
+                        <h3>🐛 エラー・修正</h3>
+                        <div class="prompt-card">
+                            <p class="prompt-text">以下のエラーが出ています。修正してください：</p>
+                            <button class="copy-button" data-copy="以下のエラーが出ています。修正してください：">コピー</button>
+                        </div>
+                        <div class="prompt-card">
+                            <p class="prompt-text">○○の部分が動かないので直してください</p>
+                            <button class="copy-button" data-copy="○○の部分が動かないので直してください">コピー</button>
+                        </div>
+                    </div>
+
+                    <div class="prompt-category">
+                        <h3>📱 レスポンシブ対応</h3>
+                        <div class="prompt-card">
+                            <p class="prompt-text">スマートフォンでも見やすいようにしてください</p>
+                            <button class="copy-button" data-copy="スマートフォンでも見やすいようにしてください">コピー</button>
+                        </div>
+                    </div>
+
+                    <div class="prompt-category">
+                        <h3>✨ その他</h3>
+                        <div class="prompt-card">
+                            <p class="prompt-text">もっとシンプルにしてください</p>
+                            <button class="copy-button" data-copy="もっとシンプルにしてください">コピー</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prompt-tip">
+                    <span class="tip-icon">✨</span>
+                    <p><strong>コツ:</strong> 完璧な日本語じゃなくてOK！「いい感じにして」「なんかちょっと違う」でも通じます。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deploy Section -->
+        <section id="deploy" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="icon">🚀</span>
+                    デプロイ手順（Google AI Studio）
+                </h2>
+
+                <div class="deploy-steps">
+                    <div class="deploy-step">
+                        <span class="step-num">1</span>
+                        <div class="step-detail">
+                            <h4>アプリが完成したら「Deploy」ボタンをクリック</h4>
+                            <p>画面右上にある青い「Deploy」ボタンを押します</p>
+                        </div>
+                    </div>
+                    <div class="deploy-step">
+                        <span class="step-num">2</span>
+                        <div class="step-detail">
+                            <h4>Google Cloud プロジェクトを選択</h4>
+                            <p>初めての場合は「新規作成」が表示されます</p>
+                        </div>
+                    </div>
+                    <div class="deploy-step">
+                        <span class="step-num">3</span>
+                        <div class="step-detail">
+                            <h4>数秒待つとURLが発行される！</h4>
+                            <p>自動的にインターネット上にアプリが公開されます</p>
+                        </div>
+                    </div>
+                    <div class="deploy-step">
+                        <span class="step-num">4</span>
+                        <div class="step-detail">
+                            <h4>URLをコピーして共有しよう</h4>
+                            <p>発行されたURLを友達や家族に送って、見てもらおう！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Presentation Section -->
+        <section id="presentation" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="icon">🎤</span>
+                    発表・共有
+                </h2>
+
+                <div class="presentation-grid">
+                    <div class="presentation-card">
+                        <h3>発表のポイント（約2分）</h3>
+                        <ul>
+                            <li>作ったアプリの名前と概要（30秒）</li>
+                            <li>工夫したところ・こだわりポイント（30秒）</li>
+                            <li>実際に動かしてデモ（1分）</li>
+                        </ul>
+                    </div>
+                    <div class="presentation-card">
+                        <h3>共有方法</h3>
+                        <ul>
+                            <li>デプロイしたURLを画面に映す</li>
+                            <li>URLをチャットに貼って共有</li>
+                            <li>QRコードを表示しても◎</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Survey Section -->
+        <section id="survey" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="icon">📝</span>
+                    アンケート
+                </h2>
+                <p class="section-description">
+                    今日のワークショップはいかがでしたか？ぜひご感想をお聞かせください
+                </p>
+                <div class="survey-embed">
+                    <!-- Airtable埋め込み用：URLを設定後、以下のコメントを外してください -->
+                    <div class="survey-placeholder">
+                        <p>アンケートフォームはここに埋め込まれます</p>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">（運営がURLを設定します）</p>
+                    </div>
+                    <!--
+                    <iframe
+                        src="[AIRTABLE_EMBED_URL]"
+                        width="100%"
+                        height="600"
+                        style="background: transparent;">
+                    </iframe>
+                    -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer" class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-info">
+                        <h3>茨城県 Vibe Coding ワークショップ <span class="year">2026</span></h3>
+                        <p>AIと一緒にアプリを作る新しい体験</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Links</h4>
+                        <ul>
+                            <li><a href="https://metagri-labo.com/contact/" target="_blank">お問い合わせ</a></li>
+                            <li><a href="#" id="logout-button">ログアウト</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="https://x.com/Metagrilabo" target="_blank" aria-label="X (Twitter)">
+                                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            </a>
+                            <a href="https://www.instagram.com/metagrilabo/" target="_blank" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCAvDULnFToZUnMeMb_Ghhbg/" target="_blank" aria-label="YouTube">
+                                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2026 MetagriLabo. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // ===== Configuration =====
+        const CONFIG = {
+            // パスワードハッシュ（SHA-256）
+            // デフォルト: "workshop2026" のハッシュ
+            // 変更する場合: https://emn178.github.io/online-tools/sha256.html でハッシュ生成
+            PASSWORD_HASH: 'a]9b8d7c6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8',
+            SESSION_KEY: 'ibaraki_workshop_auth_2026',
+            SALT: 'ibaraki-vibe-coding-2026'
+        };
+
+        // ===== 参加者データ =====
+        // 運営が参加者名とGoogle Docsリンクをここに追加します
+        const PARTICIPANTS_DATA = [
+            { no: 1, name: '山田 太郎', templateUrl: 'https://docs.google.com/document/d/XXXXX1/edit' },
+            { no: 2, name: '鈴木 花子', templateUrl: 'https://docs.google.com/document/d/XXXXX2/edit' },
+            { no: 3, name: '佐藤 一郎', templateUrl: 'https://docs.google.com/document/d/XXXXX3/edit' },
+            { no: 4, name: '田中 美咲', templateUrl: 'https://docs.google.com/document/d/XXXXX4/edit' },
+            { no: 5, name: '高橋 健二', templateUrl: 'https://docs.google.com/document/d/XXXXX5/edit' },
+            // ↓ 参加者を追加する場合はここに続けて記載
+            // { no: 6, name: '参加者名', templateUrl: 'Google DocsのURL' },
+        ];
+
+        // ===== Utility Functions =====
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // ===== Auth Functions =====
+        function checkAuth() {
+            return sessionStorage.getItem(CONFIG.SESSION_KEY) === 'authenticated';
+        }
+
+        async function verifyPassword(password) {
+            const salted = CONFIG.SALT + password;
+            const hash = await sha256(salted);
+            return hash === CONFIG.PASSWORD_HASH;
+        }
+
+        function onAuthSuccess() {
+            sessionStorage.setItem(CONFIG.SESSION_KEY, 'authenticated');
+            document.getElementById('auth-overlay').classList.add('hidden');
+            document.getElementById('main-content').classList.remove('hidden');
+            initMainContent();
+        }
+
+        function logout() {
+            sessionStorage.removeItem(CONFIG.SESSION_KEY);
+            location.reload();
+        }
+
+        function initAuth() {
+            const form = document.getElementById('auth-form');
+            const passwordInput = document.getElementById('password');
+            const errorEl = document.getElementById('auth-error');
+            const toggleBtn = document.getElementById('toggle-password');
+
+            // Toggle password visibility
+            toggleBtn.addEventListener('click', () => {
+                const type = passwordInput.type === 'password' ? 'text' : 'password';
+                passwordInput.type = type;
+                toggleBtn.querySelector('.eye-icon').textContent = type === 'password' ? '👁' : '🙈';
+            });
+
+            // Form submit
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const password = passwordInput.value;
+
+                if (await verifyPassword(password)) {
+                    errorEl.classList.add('hidden');
+                    onAuthSuccess();
+                } else {
+                    errorEl.classList.remove('hidden');
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }
+            });
+        }
+
+        // ===== Participants Table =====
+        function initParticipantsTable() {
+            const tbody = document.querySelector('#participants-table tbody');
+            const searchInput = document.getElementById('participant-search');
+            const noResults = document.getElementById('no-results');
+
+            function renderTable(data) {
+                if (data.length === 0) {
+                    tbody.innerHTML = '';
+                    noResults.classList.remove('hidden');
+                    return;
+                }
+
+                noResults.classList.add('hidden');
+                tbody.innerHTML = data.map(p => `
+                    <tr>
+                        <td>${p.no}</td>
+                        <td>${p.name}</td>
+                        <td>
+                            <a href="${p.templateUrl}" target="_blank" class="template-link">
+                                開く →
+                            </a>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            // Initial render
+            renderTable(PARTICIPANTS_DATA);
+
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+
+                if (!query) {
+                    renderTable(PARTICIPANTS_DATA);
+                    return;
+                }
+
+                const filtered = PARTICIPANTS_DATA.filter(p =>
+                    p.name.toLowerCase().includes(query) ||
+                    p.no.toString().includes(query)
+                );
+
+                renderTable(filtered);
+            });
+        }
+
+        // ===== Smooth Scroll =====
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    const href = anchor.getAttribute('href');
+                    if (href === '#') return;
+
+                    e.preventDefault();
+                    const targetId = href.slice(1);
+                    const target = document.getElementById(targetId);
+
+                    if (target) {
+                        const headerHeight = 20;
+                        const targetPosition = target.offsetTop - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // ===== Copy Buttons =====
+        function initCopyButtons() {
+            document.querySelectorAll('.copy-button').forEach(button => {
+                button.addEventListener('click', async () => {
+                    const text = button.dataset.copy;
+
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        const originalText = button.textContent;
+                        button.textContent = 'コピー完了!';
+                        button.classList.add('copied');
+
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                            button.classList.remove('copied');
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Copy failed:', err);
+                        button.textContent = 'コピー失敗';
+                        setTimeout(() => {
+                            button.textContent = 'コピー';
+                        }, 2000);
+                    }
+                });
+            });
+        }
+
+        // ===== Main Content Init =====
+        function initMainContent() {
+            initParticipantsTable();
+            initSmoothScroll();
+            initCopyButtons();
+
+            // Logout button
+            document.getElementById('logout-button').addEventListener('click', (e) => {
+                e.preventDefault();
+                logout();
+            });
+        }
+
+        // ===== Startup =====
+        document.addEventListener('DOMContentLoaded', () => {
+            if (checkAuth()) {
+                document.getElementById('auth-overlay').classList.add('hidden');
+                document.getElementById('main-content').classList.remove('hidden');
+                initMainContent();
+            } else {
+                document.getElementById('auth-overlay').classList.remove('hidden');
+                document.getElementById('main-content').classList.add('hidden');
+                initAuth();
+            }
+        });
+    </script>
+</body>
+</html>
