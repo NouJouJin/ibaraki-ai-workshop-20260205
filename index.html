@@ -339,55 +339,62 @@
 
         .timeline {
             position: relative;
-            padding-left: 2rem;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
-            border-radius: 2px;
-        }
-
         .timeline-item {
-            position: relative;
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
         .timeline-item:last-child {
             margin-bottom: 0;
         }
 
-        .timeline-marker {
-            position: absolute;
-            left: -1.5rem;
-            top: 0.25rem;
+        .timeline-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
             width: 20px;
-            height: 20px;
+        }
+
+        .timeline-marker {
+            width: 14px;
+            height: 14px;
             background: var(--bg-primary);
-            border: 4px solid var(--secondary-color);
+            border: 3px solid var(--secondary-color);
             border-radius: 50%;
+            flex-shrink: 0;
             z-index: 1;
         }
 
         .timeline-item.active .timeline-marker {
             background: var(--accent-color);
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(107, 168, 62, 0.2);
+        }
+
+        .timeline-line {
+            flex: 1;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+            margin-top: 4px;
+        }
+
+        .timeline-item:last-child .timeline-line {
+            display: none;
         }
 
         .timeline-content {
+            flex: 1;
             background: var(--bg-primary);
             padding: 1rem 1.25rem;
             border-radius: var(--border-radius-md);
             box-shadow: var(--box-shadow-sm);
-            border-left: 3px solid var(--accent-color);
         }
 
         .timeline-time {
@@ -411,6 +418,53 @@
             font-size: 0.9rem;
             color: var(--text-secondary);
             margin: 0;
+        }
+
+        .timeline-content .timeline-links {
+            margin-top: 0.75rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-content .timeline-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.35rem 0.75rem;
+            background: var(--light-blue);
+            color: var(--tech-blue);
+            border-radius: var(--border-radius-md);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .timeline-content .timeline-link:hover {
+            background: #cce5ff;
+            transform: translateY(-1px);
+            text-decoration: none;
+        }
+
+        .timeline-content .timeline-link.survey-link {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .timeline-content .timeline-link.survey-link:hover {
+            background: #ffe8a1;
+        }
+
+        .timeline-kv {
+            margin-top: 1rem;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+        }
+
+        .timeline-kv img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* ===== Vibe Coding Section ===== */
@@ -1110,7 +1164,10 @@
                 <h3 class="sub-title">タイムライン</h3>
                 <div class="timeline">
                     <div class="timeline-item active">
-                        <div class="timeline-marker"></div>
+                        <div class="timeline-left">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-line"></div>
+                        </div>
                         <div class="timeline-content">
                             <span class="timeline-time">13:00〜13:15</span>
                             <h4>🎤 オープニング</h4>
@@ -1118,15 +1175,32 @@
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-marker"></div>
+                        <div class="timeline-left">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-line"></div>
+                        </div>
                         <div class="timeline-content">
                             <span class="timeline-time">13:15〜13:40</span>
                             <h4>💡 【知る】AIでできること紹介</h4>
                             <p>AIの基礎知識、Vibe Codingの紹介</p>
+                            <div class="timeline-kv">
+                                <div style="position: relative; width: 100%; height: 0; padding-top: 56.25%; overflow: hidden; border-radius: 8px;">
+                                    <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none;"
+                                        src="https://www.canva.com/design/DAG_23h6Hz0/9vxBWKygGSvKWPCSu580Xw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div class="timeline-links">
+                                <a href="https://www.canva.com/design/DAG_23h6Hz0/9vxBWKygGSvKWPCSu580Xw/view" target="_blank" class="timeline-link">📊 スライド資料</a>
+                                <a href="https://enquete.eventos.tokyo/vote?key=9UBlSQNcdv5t2USjDpb2" target="_blank" class="timeline-link survey-link">📋 リアルタイムアンケート</a>
+                            </div>
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-marker"></div>
+                        <div class="timeline-left">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-line"></div>
+                        </div>
                         <div class="timeline-content">
                             <span class="timeline-time">13:40〜14:30</span>
                             <h4>🛠 【体験】ハンズオンタイム</h4>
@@ -1134,7 +1208,10 @@
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-marker"></div>
+                        <div class="timeline-left">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-line"></div>
+                        </div>
                         <div class="timeline-content">
                             <span class="timeline-time">14:30〜14:50</span>
                             <h4>🎉 【共有】アウトプット発表</h4>
@@ -1142,7 +1219,10 @@
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="timeline-marker"></div>
+                        <div class="timeline-left">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-line"></div>
+                        </div>
                         <div class="timeline-content">
                             <span class="timeline-time">14:50〜15:00</span>
                             <h4>📝 クロージング・アンケート</h4>
@@ -1516,13 +1596,16 @@
         // 運営が参加者名とGoogle Docsリンクをここに追加します
         const PARTICIPANTS_DATA = [
             { no: 1, name: 'Akaiwa', templateUrl: 'https://docs.google.com/document/d/1gZi5TG-VbYz9q36_agpAVXDCZdSZrbz0QyJViScbFIw/edit?tab=t.0' },
-            { no: 2, name: 'Nishimura', templateUrl: 'https://docs.google.com/document/d/XXXXX2/edit' },
-            { no: 3, name: 'Saka Daiki', templateUrl: 'https://docs.google.com/document/d/XXXXX3/edit' },
+            { no: 2, name: 'Nishimura', templateUrl: 'https://docs.google.com/document/d/141Gwm15o9YdsFoixR8RVu5Kx0_em_3R_KDfclFLVv58/edit?usp=sharing' },
+            { no: 3, name: 'Saka Daiki', templateUrl: 'https://docs.google.com/document/d/1GDjFcdVN62E4lTklBQRBh_314k4d2Uc1GuM-pscyGAw/edit?usp=sharing' },
             { no: 4, name: 'Saka Akiko', templateUrl: 'https://docs.google.com/document/d/XXXXX4/edit' },
             { no: 5, name: 'Shigihara', templateUrl: 'https://docs.google.com/document/d/XXXXX5/edit' },
             { no: 6, name: 'Nemoto', templateUrl: 'https://docs.google.com/document/d/XXXXX6/edit' },
             { no: 7, name: 'Hosoya', templateUrl: 'https://docs.google.com/document/d/XXXXX7/edit' },
             { no: 8, name: 'Aizawa', templateUrl: 'https://docs.google.com/document/d/XXXXX8/edit' },
+            { no: 9, name: '予備1', templateUrl: 'https://docs.google.com/document/d/XXXXX9/edit' },
+            { no: 10, name: '予備2', templateUrl: 'https://docs.google.com/document/d/XXXXX10/edit' },
+            { no: 11, name: '予備3', templateUrl: 'https://docs.google.com/document/d/XXXXX11/edit' },
         ];
 
         // ===== Utility Functions =====
