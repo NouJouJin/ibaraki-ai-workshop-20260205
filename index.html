@@ -932,6 +932,124 @@
             color: var(--text-muted);
         }
 
+        /* ===== Community Section ===== */
+        .community-card {
+            background: linear-gradient(135deg, #5865F2 0%, #7289DA 100%);
+            border-radius: var(--border-radius-xl);
+            padding: 2rem;
+            color: white;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .community-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .community-logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .community-header h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .community-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0.25rem 0 0;
+        }
+
+        .community-features {
+            display: grid;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .community-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.15);
+            padding: 0.875rem 1rem;
+            border-radius: var(--border-radius-md);
+        }
+
+        .community-feature .feature-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .community-feature .feature-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .community-feature .feature-text strong {
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .community-feature .feature-text span {
+            opacity: 0.9;
+            font-size: 0.85rem;
+        }
+
+        .community-cta {
+            text-align: center;
+        }
+
+        .community-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            background: white;
+            color: #5865F2;
+            border-radius: var(--border-radius-md);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .community-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        .community-button svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .community-note {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--border-radius-md);
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .community-note strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
         /* ===== Footer ===== */
         .footer {
             background: var(--bg-dark);
@@ -1528,6 +1646,66 @@
             </div>
         </section>
 
+        <!-- Community Section -->
+        <section id="community" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="icon">🌾</span>
+                    コミュニティのご案内
+                </h2>
+                <p class="section-description">
+                    今日のワークショップを機に、一緒に学び続けませんか？
+                </p>
+
+                <div class="community-card">
+                    <div class="community-header">
+                        <div class="community-logo">🌾</div>
+                        <div>
+                            <h3>Metagri研究所</h3>
+                            <p>農業 × Web3 × AI のコミュニティ</p>
+                        </div>
+                    </div>
+
+                    <div class="community-features">
+                        <div class="community-feature">
+                            <span class="feature-icon">💬</span>
+                            <div class="feature-text">
+                                <strong>AIに関する情報共有・勉強会</strong>
+                                <span>最新のAI技術やツールの情報をメンバー同士で共有しています</span>
+                            </div>
+                        </div>
+                        <div class="community-feature">
+                            <span class="feature-icon">🎉</span>
+                            <div class="feature-text">
+                                <strong>2月中旬：Vibe Coding 共有会 開催予定</strong>
+                                <span>インターン生が主導で、Vibe Codingの活用事例を共有する会を企画中！</span>
+                            </div>
+                        </div>
+                        <div class="community-feature">
+                            <span class="feature-icon">🤝</span>
+                            <div class="feature-text">
+                                <strong>農業とテクノロジーの融合</strong>
+                                <span>Web3やAIを活用した新しい農業の形を一緒に探求しましょう</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-cta">
+                        <a href="https://discord.gg/hyw3AkKa8e" target="_blank" class="community-button">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                            </svg>
+                            Discordに参加する
+                        </a>
+                        <div class="community-note">
+                            <strong>💡 参加後のステップ</strong>
+                            「#自己紹介」チャンネルで一言自己紹介を投稿すると、すべてのチャンネルが解放されます！
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Survey Section -->
         <section id="survey" class="section">
             <div class="container">
@@ -1598,11 +1776,11 @@
             { no: 1, name: 'Akaiwa', templateUrl: 'https://docs.google.com/document/d/1gZi5TG-VbYz9q36_agpAVXDCZdSZrbz0QyJViScbFIw/edit?tab=t.0' },
             { no: 2, name: 'Nishimura', templateUrl: 'https://docs.google.com/document/d/141Gwm15o9YdsFoixR8RVu5Kx0_em_3R_KDfclFLVv58/edit?usp=sharing' },
             { no: 3, name: 'Saka Daiki', templateUrl: 'https://docs.google.com/document/d/1GDjFcdVN62E4lTklBQRBh_314k4d2Uc1GuM-pscyGAw/edit?usp=sharing' },
-            { no: 4, name: 'Saka Akiko', templateUrl: 'https://docs.google.com/document/d/XXXXX4/edit' },
-            { no: 5, name: 'Shigihara', templateUrl: 'https://docs.google.com/document/d/XXXXX5/edit' },
-            { no: 6, name: 'Nemoto', templateUrl: 'https://docs.google.com/document/d/XXXXX6/edit' },
-            { no: 7, name: 'Hosoya', templateUrl: 'https://docs.google.com/document/d/XXXXX7/edit' },
-            { no: 8, name: 'Aizawa', templateUrl: 'https://docs.google.com/document/d/XXXXX8/edit' },
+            { no: 4, name: 'Saka Akiko', templateUrl: 'https://docs.google.com/document/d/1jssJJaaWH6cDzd-DQ3kt1qzYpRGjktYcjdqSAMG-FyI/edit?usp=sharing' },
+            { no: 5, name: 'Shigihara', templateUrl: 'https://docs.google.com/document/d/1qbBnzoYhxzJnC-X3eCHYZV6zWEj6uVUPnBR5QF6QEaE/edit?usp=sharing' },
+            { no: 6, name: 'Nemoto', templateUrl: 'https://docs.google.com/document/d/1H_6btNErvKLKjItmHMWxqCtb6uEWUOPGgQ_nYSGKhLE/edit?usp=sharing' },
+            { no: 7, name: 'Hosoya', templateUrl: 'https://docs.google.com/document/d/1lJCussxUGODBayW1wS6fFzBNTGE1u51QvR1cvbo0OzY/edit?usp=sharing' },
+            { no: 8, name: 'Aizawa', templateUrl: 'https://docs.google.com/document/d/1WQ3Nyu6-GNr8z7M_Jx336M_p7OERA-N8s9djbSFK00A/edit?usp=sharing' },
             { no: 9, name: '予備1', templateUrl: 'https://docs.google.com/document/d/XXXXX9/edit' },
             { no: 10, name: '予備2', templateUrl: 'https://docs.google.com/document/d/XXXXX10/edit' },
             { no: 11, name: '予備3', templateUrl: 'https://docs.google.com/document/d/XXXXX11/edit' },
