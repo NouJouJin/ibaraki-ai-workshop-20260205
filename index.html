@@ -875,6 +875,39 @@
             font-weight: 500;
         }
 
+        .deploy-image-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-sm);
+            text-align: center;
+        }
+
+        .deploy-image-section h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .deploy-image-section p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .deploy-image {
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .deploy-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* ===== Presentation Section ===== */
         .presentation-grid {
             display: grid;
@@ -930,6 +963,38 @@
             padding: 3rem;
             text-align: center;
             color: var(--text-muted);
+        }
+
+        .survey-fallback {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-md);
+            text-align: center;
+        }
+
+        .survey-fallback p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .survey-link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            transition: background var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .survey-link-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            text-decoration: none;
         }
 
         /* ===== Community Section ===== */
@@ -1619,6 +1684,14 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="deploy-image-section">
+                    <h4>テンプレートへのURL貼り付けイメージ</h4>
+                    <p>デプロイ後に発行されたURLを、テンプレートのドキュメントに貼り付けて共有しましょう</p>
+                    <div class="deploy-image">
+                        <img src="http://metagri-labo.com/ai-guide/wp-content/uploads/sites/2/2026/02/AISTUDIOURLSHARE.png" alt="URLの貼り付けイメージ">
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1680,8 +1753,8 @@
                         <div class="community-feature">
                             <span class="feature-icon">🎉</span>
                             <div class="feature-text">
-                                <strong>2月中旬：Vibe Coding 共有会 開催予定</strong>
-                                <span>インターン生が主導で、Vibe Codingの活用事例を共有する会を企画中！</span>
+                                <strong>2月15日：Vibe Coding 共有会 開催予定</strong>
+                                <span>インターン生が主導で、Discord上でVibe Codingの活用事例を共有する会を予定！</span>
                             </div>
                         </div>
                         <div class="community-feature">
@@ -1724,6 +1797,12 @@
                 </p>
                 <div class="survey-embed">
                     <iframe class="airtable-embed" src="https://airtable.com/embed/appza6glAeKwmdA2i/pagiH7DcRORwEuqhZ/form" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+                </div>
+                <div class="survey-fallback">
+                    <p>フォームが表示されない場合は、こちらからご回答ください</p>
+                    <a href="https://airtable.com/appza6glAeKwmdA2i/pagiH7DcRORwEuqhZ/form" target="_blank" class="survey-link-button">
+                        📝 アンケートフォームを開く →
+                    </a>
                 </div>
             </div>
         </section>
